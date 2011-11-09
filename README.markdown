@@ -27,6 +27,7 @@ Production Tweaks
 * Change the Gemfile to point at the Onelogin version or ruby-saml
 * Add your own authentication before_filter to the Admin namespace
  * (remove the _admin.html.erb layout warning about this)
+* Move the Admin ActiveRecord to a real database.  (Not sqlite)
 * Move the Rails session store [to a database](http://oldwiki.rubyonrails.org/rails/pages/HowtoChangeSessionStore)
  * Bonus points to figure out a better method with memcache on top of a database store
 * The SAML process is bulletproof to session hijacking and replays.  The default Rails session cookie method **is** vulnerable to this, so [read the RoR security guide](http://guides.rubyonrails.org/security.html#session-fixation-countermeasures) to make sure your app is just as secure
