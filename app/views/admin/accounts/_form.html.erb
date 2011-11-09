@@ -1,0 +1,45 @@
+<%= form_for(@admin_account) do |f| %>
+  <% if @admin_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_account.errors.count, "error") %> prohibited this admin_account from being saved:</h2>
+
+      <ul>
+      <% @admin_account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :host, "Virtual Host Name"
+	 %><br />
+    <%= f.text_field :host, { :value => request.host, :class => "qtip",
+		:tooltip => "Enter the name of the SP domain name that will be " +
+		" associated with the IdP.<br>Rails request.host must match this" +
+		" to look up this account."
+	} 
+	  %>
+  </div>
+  <div class="field">
+    <%= f.label :idle_timeout %><br />
+    <%= f.number_field :idle_timeout, { :class => "qtip",
+		:tooltip => "Not used for now, just playing around" }
+	 %>
+  </div>
+  <div class="field">
+    <%= f.label :session_timeout %><br />
+    <%= f.number_field :session_timeout, { :class => "qtip",
+		:tooltip => "Not used for now, just playing around" }
+	 %>
+  </div>
+	<%# @admin_setting = Admin::Setting.new %>
+	<%#= render :partial => "admin/settings/form_fields", :locals => { :f => f } %>
+	<%= f.fields_for :setting do |builder| %>
+		<%= render :partial => "admin/settings/form_fields", :locals => { :f => builder } %>
+	<% end %>
+	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

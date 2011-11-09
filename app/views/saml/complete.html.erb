@@ -1,0 +1,9 @@
+<h1>Saml#complete</h1>
+<p>Find me in app/views/saml/complete.html.erb</p>
+<p>NameID: <%= session[:userid] %></p>
+Attributes<br><br>
+<% @response.attributes.each do |name, value| %>
+	<%= name %> = <%= value %><br>
+<% end %>
+<p><%= link_to "Logout", :action=>"logout"%></p>
+

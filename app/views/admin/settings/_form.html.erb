@@ -1,0 +1,22 @@
+<%= form_for(@admin_setting) do |f| %>
+  <% if @admin_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_setting.errors.count, "error") %> prohibited this admin_setting from being saved:</h2>
+
+      <ul>
+      <% @admin_setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render :partial => "/admin/settings/form_fields", :locals => { :f => f } %>
+
+  <% if defined?(do_submit) && do_submit == false %>
+  <% else %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>
+<% end %>

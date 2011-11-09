@@ -1,0 +1,29 @@
+<h1>Listing admin_accounts</h1>
+
+<table>
+  <tr>
+    <th>Host</th>
+    <th>Idle timeout</th>
+    <th>Session timeout</th>
+    <th>Settings</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admin_accounts.each do |admin_account| %>
+  <tr>
+    <td><%= admin_account.host %></td>
+    <td><%= admin_account.idle_timeout %></td>
+    <td><%= admin_account.session_timeout %></td>
+    <td><%= link_to 'View', admin_setting_path(admin_account.setting) %></td>
+    <td><%= link_to 'Show', admin_account %></td>
+    <td><%= link_to 'Edit', edit_admin_account_path(admin_account) %></td>
+    <td><%= link_to 'Destroy', admin_account, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Account', new_admin_account_path %>

@@ -1,0 +1,24 @@
+// Place all the styles related to the admin/accounts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Set a slightly bigger max-width so we can fit in our photos */
+.ui-tooltip-flickr{
+    max-width: 700px;
+}
+
+    /* Adds the flickr favicon to the top right of the tooltip :) */
+    .ui-tooltip-flickr .ui-tooltip-titlebar{
+        background-image: url('http://l.yimg.com/g/favicon.ico');
+        background-repeat: no-repeat;
+        background-position: 97% 7px;
+    }
+
+    .ui-tooltip-flickr .ui-tooltip-title{
+        padding-right: 0;
+    }
+
+    .ui-tooltip-flickr img{
+        margin: 0 auto;
+    }
+

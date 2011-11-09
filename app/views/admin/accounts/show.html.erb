@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Host:</b>
+  <%= @admin_account.host %>
+</p>
+
+<p>
+  <b>Idle timeout:</b>
+  <%= @admin_account.idle_timeout %>
+</p>
+
+<p>
+  <b>Session timeout:</b>
+  <%= @admin_account.session_timeout %>
+</p>
+
+<p>
+  <b>Setting:</b>
+  <%= @admin_account.setting %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_account_path(@admin_account) %> |
+<%= link_to 'Back', admin_accounts_path %>

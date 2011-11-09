@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SamlAuth</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if defined?(controller.sub_layout) %>
+  <%= render :partial => "layouts/#{controller.sub_layout}" %>
+<% end %>
+<%= yield %>
+
+</body>
+</html>

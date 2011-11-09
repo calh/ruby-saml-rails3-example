@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  host: MyString
+  idle_timeout: 1
+  session_timeout: 1
+  setting: 
+
+two:
+  host: MyString
+  idle_timeout: 1
+  session_timeout: 1
+  setting: 

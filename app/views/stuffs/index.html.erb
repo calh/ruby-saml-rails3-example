@@ -1,0 +1,29 @@
+<h1>Listing yer stuffs</h1>
+
+Logged in as: "<%= session[:userid] %>" <br>
+<% if session[:attributes] != nil %>
+<br>With attributes: <br>
+  <% session[:attributes].each do |name, value| %>
+	<%= name %> = <%= value %><br>
+<% end %>
+<% end %>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stuffs.each do |stuff| %>
+  <tr>
+    <td><%= link_to 'Show', stuff %></td>
+    <td><%= link_to 'Edit', edit_stuff_path(stuff) %></td>
+    <td><%= link_to 'Destroy', stuff, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stuff', new_stuff_path %>

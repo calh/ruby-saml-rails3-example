@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  assertion_consumer_service_url: MyString
+  assertion_consumer_service_binding: MyString
+  idp_metadata: MyString
+  idp_metadata_ttl: 1
+  name_identifier_format: MyString
+  issuer: MyString
+  authn_context: MyString
+  idp_cert_fingerprint: MyString
+  idp_sso_target_url: MyString
+
+two:
+  assertion_consumer_service_url: MyString
+  assertion_consumer_service_binding: MyString
+  idp_metadata: MyString
+  idp_metadata_ttl: 1
+  name_identifier_format: MyString
+  issuer: MyString
+  authn_context: MyString
+  idp_cert_fingerprint: MyString
+  idp_sso_target_url: MyString

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Assertion consumer service url:</b>
+  <%= @admin_setting.assertion_consumer_service_url %>
+</p>
+
+<p>
+  <b>Assertion consumer service binding:</b>
+  <%= @admin_setting.assertion_consumer_service_binding %>
+</p>
+
+<p>
+  <b>Idp metadata:</b>
+  <%= @admin_setting.idp_metadata %>
+</p>
+
+<p>
+  <b>Idp metadata ttl:</b>
+  <%= @admin_setting.idp_metadata_ttl %>
+</p>
+
+<p>
+  <b>Name identifier format:</b>
+  <%= @admin_setting.name_identifier_format %>
+</p>
+
+<p>
+  <b>Issuer:</b>
+  <%= @admin_setting.issuer %>
+</p>
+
+<p>
+  <b>Authn context:</b>
+  <%= @admin_setting.authn_context %>
+</p>
+
+<p>
+  <b>Idp cert fingerprint:</b>
+  <%= @admin_setting.idp_cert_fingerprint %>
+</p>
+
+<p>
+  <b>Idp sso target url:</b>
+  <%= @admin_setting.idp_sso_target_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_setting_path(@admin_setting) %> |
+<%= link_to 'Back', admin_settings_path %>
