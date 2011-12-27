@@ -17,8 +17,12 @@ Setup
  * IdP Metadata
 * Give **your** metadata URL to the IdP.  See the SamlController, the default will look like this:  http://sp.example.com/saml/metadata
 
-After everything is setup, hitting the application root should hit the _before_filter_ in the _Stuff_ controller, which redirects to /saml, and on to the IdP.  After authentication, it should come back to the Stuff controller and display your Name ID and any SAML attributes that were created by the IdP.
+After everything is setup, hitting the application root should show the "Listing some stuff" page with Log In link.
+That link hits the /saml controller to start the SSO flow.  After logging in and arriving at the app root, you
+should see your Name ID and list of SAML attributes created by the IdP.
 
+Optionally, uncomment the _before_filter_ in the _Stuff_ controller for a "members only" authentication.  The 
+before_filter checks to see if a session exists, and if not, redirects to /saml.
 
 
 Production Tweaks
