@@ -25,6 +25,12 @@ class Admin::Account < ActiveRecord::Base
 	if setting_AR.assertion_consumer_service_binding != nil
 		setting_SAML.assertion_consumer_service_binding = setting_AR.assertion_consumer_service_binding
 	end
+	if setting_AR.single_logout_service_url != nil
+		setting_SAML.single_logout_service_url = setting_AR.single_logout_service_url
+	end
+	if setting_AR.single_logout_service_binding != nil
+		setting_SAML.single_logout_service_binding = setting_AR.single_logout_service_binding
+	end
 	if setting_AR.issuer != nil
 		setting_SAML.issuer = setting_AR.issuer
 	end

@@ -27,6 +27,7 @@ class Admin::AccountsController < Admin::BaseController
     @admin_account = Admin::Account.new
     @admin_account.build_setting
     @admin_account.setting.assertion_consumer_service_url = request.scheme + "://" + request.host + "/saml/consume"
+    @admin_account.setting.single_logout_service_url = request.scheme + "://" + request.host + "/saml/logout"
     @admin_account.setting.name_identifier_format = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
     @admin_account.setting.issuer = request.scheme + "://" + request.host
 

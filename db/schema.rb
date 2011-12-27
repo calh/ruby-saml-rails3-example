@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20111108231310) do
   create_table "admin_settings", :force => true do |t|
     t.string   "assertion_consumer_service_url"
     t.string   "assertion_consumer_service_binding"
+    t.string   "single_logout_service_url"
+    t.string   "single_logout_service_binding"
     t.string   "idp_metadata"
     t.integer  "idp_metadata_ttl"
     t.string   "name_identifier_format"

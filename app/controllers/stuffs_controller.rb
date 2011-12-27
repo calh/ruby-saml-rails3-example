@@ -2,13 +2,20 @@
 # the authentication hooks should work in your application.
 
 class StuffsController < ApplicationController
-	#  The before_filter calls authenticate below
-	before_filter :authenticate
+	#  The before_filter calls authenticate below.  
+	# Uncomment to force authentication for the entire Stuff controller
+	#before_filter :authenticate
   # GET /stuffs
   # GET /stuffs.json
   def index
     @stuffs = Stuff.all
+    # Look up the settings object to provide a log out link in the view
+    @settings = Admin::Account.get_saml_settings( request.host )
 
+    # If we're viewing this unauthenticated, set our goback URL for after logging in
+    if session[:userid].nil?
+	session[:goback_to] = request.url
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @stuffs }
@@ -86,12 +93,13 @@ class StuffsController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def authenticate
 	unless logged_in?
 		# Save our current path in the session to return back to
 		# after logging in.  (Saml controller looks for this)
+		logger.info "Goback URL is '#{request.url}'"
 		session[:goback_to] = request.url
 		redirect_to saml_url
 	end

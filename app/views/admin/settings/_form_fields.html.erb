@@ -26,6 +26,32 @@
   </div>
 	<br>
   <div class="field">
+    <%= f.label :single_logout_service_url, "Single Logout Service URL" %><br />
+    <%= f.text_field :single_logout_service_url, { :class => "qtip",
+                :tooltip => "The SLO URL tells the IdP where to direct to for" +
+                " Logout requests and responses.  Uses Binding Method below",
+                :size => 50
+         } %>
+  </div>
+        <br>
+  <div class="field">
+    <%= f.label :single_logout_service_binding, "Single Logout Service Binding Method" %><br />
+    <%= f.select(
+        :single_logout_service_binding,
+        [
+                "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+                "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+        ],
+        {},{ :class => "qtip",
+                :tooltip => "The SLO binding tells the IdP what type of request to make " +
+                "at the SLO URL.  HTTP-Redirect means a GET request.  SOAP and Artifact " +
+                "are part of the protocol, but not implemented in ruby-saml (yet)"
+        }
+       )
+     %>
+  </div>
+        <br>
+  <div class="field">
     <%= f.label :idp_metadata, "IdP Metadata URL or local file" %><br />
     <%= f.text_field :idp_metadata, { :size => 50, :class => "qtip",
 		:tooltip => "URL that points at the IdP's metadata.  This should return XML." +
