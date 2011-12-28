@@ -12,6 +12,10 @@ class StuffsController < ApplicationController
     # Look up the settings object to provide a log out link in the view
     @settings = Admin::Account.get_saml_settings( request.host )
 
+    if @settings.nil?
+        return redirect_to '/saml'
+    end
+
     # If we're viewing this unauthenticated, set our goback URL for after logging in
     if session[:userid].nil?
 	session[:goback_to] = request.url
