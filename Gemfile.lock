@@ -49,15 +49,36 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
+    engineyard (1.3.13)
+      engineyard-serverside-adapter (= 1.4.0)
+      escape (~> 0.0.4)
+      highline (~> 1.6.1)
+      json_pure
+      open4 (~> 1.0.1)
+      rest-client (~> 1.6.0)
+      thor (~> 0.14.6)
+    engineyard-serverside-adapter (1.4.0)
+      escape (~> 0.0.4)
+      json_pure
     erubis (2.7.0)
+    escape (0.0.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    heroku (2.25.0)
+      launchy (>= 0.3.2)
+      netrc (~> 0.7.1)
+      rest-client (~> 1.6.1)
+      rubyzip
+    highline (1.6.12)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.7.3)
+    json_pure (1.7.3)
+    launchy (2.1.0)
+      addressable (~> 2.2.6)
     libv8 (3.3.10.4)
     macaddr (1.6.1)
       systemu (~> 2.5.0)
@@ -67,6 +88,9 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.3.6)
+    netrc (0.7.1)
+    open4 (1.0.1)
+    pg (0.13.2)
     polyglot (0.3.3)
     rack (1.3.6)
     rack-cache (1.2)
@@ -95,6 +119,9 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rubyzip (0.9.8)
     sass (3.1.20)
     sass-rails (3.1.6)
       actionpack (~> 3.1.0)
@@ -126,8 +153,11 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.1)
+  engineyard
+  heroku
   jquery-rails
   json
+  pg
   rails (= 3.1.1)
   ruby-saml!
   sass-rails (~> 3.1.4)
