@@ -5,11 +5,11 @@ class SamlController < ApplicationController
 
   # This is the first hit method that starts the SAML request flow 
   def index
-	# redirect to our setup page if nothing is defined
-	# (the out-of-box n00b page)
+  # redirect to our setup page if nothing is defined
+  # (the out-of-box n00b page)
     if @settings.nil?
-	render :action => :no_settings
-	return 
+  render :action => :no_settings
+  return 
     end
 
     request = Onelogin::Saml::Authrequest.new(@settings)
@@ -17,36 +17,36 @@ class SamlController < ApplicationController
     # Create the request, returning an action type and associated content
     action, content = request.create
     case action
-	when "GET"
-	 	# for GET requests, do a redirect on the content
-		redirect_to content
-	when "POST"
-		# for POST requests (form) render the content as HTML
-		render :inline => content
+  when "GET"
+     # for GET requests, do a redirect on the content
+    redirect_to content
+  when "POST"
+    # for POST requests (form) render the content as HTML
+    render :inline => content
     end
   end
 
   def consume
-	@response = Onelogin::Saml::Response.new(params[:SAMLResponse])
-	@response.settings = @settings
-	logger.info "NAMEID: #{@response.name_id}"
+  @response = Onelogin::Saml::Response.new(params[:SAMLResponse])
+  @response.settings = @settings
+  logger.info "NAMEID: #{@response.name_id}"
 
-	respond_to do |format|
-		if @response.is_valid?
-			session[:userid] = @response.name_id
-			session[:attributes] = @response.attributes
-			format.html {
-				if session[:goback_to] != nil
-					redirect_to session[:goback_to]
-				else	
-					render :action => :complete 
-				end
-			}
-		else
-			#redirect_to :action => :fail
-			format.html { render :action => :fail }
-		end
-	end
+  respond_to do |format|
+    if @response.is_valid?
+      session[:userid] = @response.name_id
+      session[:attributes] = @response.attributes
+      format.html {
+        if session[:goback_to] != nil
+          redirect_to session[:goback_to]
+        else  
+          render :action => :complete 
+        end
+      }
+    else
+      #redirect_to :action => :fail
+      format.html { render :action => :fail }
+    end
+  end
   end
 
   def complete
@@ -100,7 +100,7 @@ class SamlController < ApplicationController
   def logout_response
         logout_response = Onelogin::Saml::LogoutResponse.new( :response => params[:SAMLResponse], :settings => @settings )
 
-	logger.info "LogoutResponse is: #{logout_response.to_s}"
+  logger.info "LogoutResponse is: #{logout_response.to_s}"
 
         # If the IdP gave us a signed response, verify it
         unless logout_response.is_valid?
@@ -121,7 +121,7 @@ class SamlController < ApplicationController
         # Actually log out this session
         if logout_response.success?
                 logger.info "Delete session for '#{session[:userid]}'"
-		delete_session
+    delete_session
         end
   end
 
@@ -138,7 +138,7 @@ class SamlController < ApplicationController
         logger.info "IdP initiated Logout for #{logout_request.name_id}"
 
         # Actually log out this session
-	delete_session
+  delete_session
 
         # Generate a response to the IdP.  :transaction_id sets the InResponseTo
         # SAML message to create a reply to the IdP in the LogoutResponse.
@@ -181,7 +181,7 @@ class SamlController < ApplicationController
 
   # Delete a user's session.  Add your own custom stuff in here 
   def delete_session
-	session[:userid] = nil
-	session[:attributes] = nil
+  session[:userid] = nil
+  session[:attributes] = nil
   end
 end

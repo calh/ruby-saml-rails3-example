@@ -4,9 +4,9 @@
   Logged in as: "<%= session[:userid] %>" <br>
    <br>With attributes: <br>
      <% session[:attributes].each do |name, value| %>
-	<%= name %> = <%= value %><br>
+  <%= name %> = <%= value %><br>
      <% end %>
-	<br>
+  <br>
    <%= link_to 'Log Out', @settings.single_logout_service_url %>
 <% else %>
   Not logged in.  <br><br>

@@ -2,10 +2,10 @@ $(document).ready(function()
 {
     $('.qtip').each(function()
     {
-	$(this).qtip({
+  $(this).qtip({
       
-   	content: $(this).attr('tooltip'),
-	style: 'cream'
+     content: $(this).attr('tooltip'),
+  style: 'cream'
        });
     });
 });
