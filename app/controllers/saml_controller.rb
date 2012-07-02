@@ -129,11 +129,11 @@ class SamlController < ApplicationController
   def idp_logout_request
     logout_request = Onelogin::Saml::LogoutRequest.new( :request => params[:SAMLRequest], :settings => @settings)
     unless logout_request.is_valid?
-    logger.error "IdP initiated LogoutRequest was not valid!"
+      logger.error "IdP initiated LogoutRequest was not valid!"
     end
     # Check that the name ID's match
     if session[:userid] != logout_request.name_id
-    logger.error "The session's Name ID '#{session[:userid]}' does not match the LogoutRequest's Name ID '#{logout_request.name_id}'"
+      logger.error "The session's Name ID '#{session[:userid]}' does not match the LogoutRequest's Name ID '#{logout_request.name_id}'"
     end
     logger.info "IdP initiated Logout for #{logout_request.name_id}"
 
@@ -142,17 +142,16 @@ class SamlController < ApplicationController
 
     # Generate a response to the IdP.  :transaction_id sets the InResponseTo
     # SAML message to create a reply to the IdP in the LogoutResponse.
-    action, content = logout_response = Onelogin::Saml::LogoutResponse.new(
-    :settings => @settings ).create(
-            :transaction_id => logout_request.transaction_id
-    )
+    action, content = logout_response = Onelogin::Saml::LogoutResponse.new(:settings => @settings).
+      create(:transaction_id => logout_request.transaction_id)
+
     case action
-    when "GET"
-      # for GET requests, do a redirect on the content
-      redirect_to content
-    when "POST"
-      # for POST requests (form) render the content as HTML
-      render :inline => content
+      when "GET"
+        # for GET requests, do a redirect on the content
+        redirect_to content
+      when "POST"
+        # for POST requests (form) render the content as HTML
+        render :inline => content
     end
   end
 
