@@ -13,12 +13,12 @@ class StuffsController < ApplicationController
     @settings = Admin::Account.get_saml_settings( request.host )
 
     if @settings.nil?
-        return redirect_to '/saml'
+      return redirect_to '/saml'
     end
 
     # If we're viewing this unauthenticated, set our goback URL for after logging in
     if session[:userid].nil?
-  session[:goback_to] = request.url
+      session[:goback_to] = request.url
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -100,18 +100,18 @@ class StuffsController < ApplicationController
   private
 
   def authenticate
-  unless logged_in?
-    # Save our current path in the session to return back to
-    # after logging in.  (Saml controller looks for this)
-    logger.info "Goback URL is '#{request.url}'"
-    session[:goback_to] = request.url
-    redirect_to saml_url
-  end
+    unless logged_in?
+      # Save our current path in the session to return back to
+      # after logging in.  (Saml controller looks for this)
+      logger.info "Goback URL is '#{request.url}'"
+      session[:goback_to] = request.url
+      redirect_to saml_url
+    end
   end
 
   def logged_in?
-  return false if session[:userid].nil?
-  return false if session[:userid] == ""
-  return true
+    return false if session[:userid].nil?
+    return false if session[:userid] == ""
+    return true
   end
 end
