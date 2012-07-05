@@ -13,32 +13,32 @@
 
   <div class="field">
     <%= f.label :host, "Virtual Host Name"
-	 %><br />
+   %><br />
     <%= f.text_field :host, { :value => request.host, :class => "qtip",
-		:tooltip => "Enter the name of the SP domain name that will be " +
-		" associated with the IdP.<br>Rails request.host must match this" +
-		" to look up this account."
-	} 
-	  %>
+    :tooltip => "Enter the name of the SP domain name that will be " +
+    " associated with the IdP.<br>Rails request.host must match this" +
+    " to look up this account."
+  } 
+    %>
   </div>
   <div class="field">
     <%= f.label :idle_timeout %><br />
     <%= f.number_field :idle_timeout, { :class => "qtip",
-		:tooltip => "Not used for now, just playing around" }
-	 %>
+    :tooltip => "Not used for now, just playing around" }
+   %>
   </div>
   <div class="field">
     <%= f.label :session_timeout %><br />
     <%= f.number_field :session_timeout, { :class => "qtip",
-		:tooltip => "Not used for now, just playing around" }
-	 %>
+    :tooltip => "Not used for now, just playing around" }
+   %>
   </div>
-	<%# @admin_setting = Admin::Setting.new %>
-	<%#= render :partial => "admin/settings/form_fields", :locals => { :f => f } %>
-	<%= f.fields_for :setting do |builder| %>
-		<%= render :partial => "admin/settings/form_fields", :locals => { :f => builder } %>
-	<% end %>
-	
+  <%# @admin_setting = Admin::Setting.new %>
+  <%#= render :partial => "admin/settings/form_fields", :locals => { :f => f } %>
+  <%= f.fields_for :setting do |builder| %>
+    <%= render :partial => "admin/settings/form_fields", :locals => { :f => builder } %>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

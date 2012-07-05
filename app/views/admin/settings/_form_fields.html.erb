@@ -2,29 +2,29 @@
   <div class="field">
     <%= f.label :assertion_consumer_service_url, "Assertion Consumer Service URL" %><br />
     <%= f.text_field :assertion_consumer_service_url, { :class => "qtip", 
-		:tooltip => "The ACS URL tells the IdP where to direct back to after" +
-		" authentication has succeeded.  Uses Binding Method below",
-		:size => 50
-	 } %>
+    :tooltip => "The ACS URL tells the IdP where to direct back to after" +
+    " authentication has succeeded.  Uses Binding Method below",
+    :size => 50
+   } %>
   </div>
-	<br>
+  <br>
   <div class="field">
     <%= f.label :assertion_consumer_service_binding, "Assertion Consumer Service Binding Method" %><br />
     <%= f.select( 
-	:assertion_consumer_service_binding,
-	[	
-		"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
-		"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
-	],
-	{},{ :class => "qtip",
-		:tooltip => "The ACS binding tells the IdP what type of request to make " + 
-		"at the ACS URL.  HTTP-Redirect means a GET request.  SOAP and Artifact " +
-		"are part of the protocol, but not implemented in ruby-saml (yet)"
-	}
+  :assertion_consumer_service_binding,
+  [  
+    "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+    "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+  ],
+  {},{ :class => "qtip",
+    :tooltip => "The ACS binding tells the IdP what type of request to make " + 
+    "at the ACS URL.  HTTP-Redirect means a GET request.  SOAP and Artifact " +
+    "are part of the protocol, but not implemented in ruby-saml (yet)"
+  }
        )
      %>
   </div>
-	<br>
+  <br>
   <div class="field">
     <%= f.label :single_logout_service_url, "Single Logout Service URL" %><br />
     <%= f.text_field :single_logout_service_url, { :class => "qtip",
@@ -54,57 +54,57 @@
   <div class="field">
     <%= f.label :idp_metadata, "IdP Metadata URL or local file" %><br />
     <%= f.text_field :idp_metadata, { :size => 50, :class => "qtip",
-		:tooltip => "URL that points at the IdP's metadata.  This should return XML." +
-		"  You can also specify a local file if you can't do a remote call. (See caching TTL)"
-	} %>
+    :tooltip => "URL that points at the IdP's metadata.  This should return XML." +
+    "  You can also specify a local file if you can't do a remote call. (See caching TTL)"
+  } %>
   </div>
-	<br>
+  <br>
 
   <div class="field">
     <%= f.label :idp_metadata_ttl, "IdP Metdata TTL (optonal)" %><br />
     <%= f.number_field :idp_metadata_ttl, { :class => "qtip",
-		:tooltip => "Time To Live in seconds that we consider the IdP metadata to be fresh." +
-		" Default is 86400 (1 day).  If you need to force a refresh just restart Rails."
-	} %>
+    :tooltip => "Time To Live in seconds that we consider the IdP metadata to be fresh." +
+    " Default is 86400 (1 day).  If you need to force a refresh just restart Rails."
+  } %>
   </div>
-	<br>
+  <br>
   <div class="field">
     <%= f.label :name_identifier_format, "Name Identifier Format" %><br />
-    <%= f.text_field :name_identifier_format, {	:size => 50,
-		:class => "qtip",
-		:tooltip => "NameID format.  Most IdPs use transient, but check with the IdP admin or " +
-		"look at the IdP metdata.  The supported NameID formats should be in there."
-	}%>
+    <%= f.text_field :name_identifier_format, {  :size => 50,
+    :class => "qtip",
+    :tooltip => "NameID format.  Most IdPs use transient, but check with the IdP admin or " +
+    "look at the IdP metdata.  The supported NameID formats should be in there."
+  }%>
   </div>
-	<br>
+  <br>
   <div class="field">
     <%= f.label :issuer, "Issuer (your entity ID)" %><br />
-    <%= f.text_field :issuer, {	:size => 50,
-		:class => "qtip",
-		:tooltip => "The Entity ID is a name that associates the SP to the IdP.  Some IdP's " + 
-		"might have special behavior triggerd by this name, like redirecting to it as a URL " +
-		"under some horrible failure condition.  Most IdPs use this string to configure permissions too."
-	} %>
+    <%= f.text_field :issuer, {  :size => 50,
+    :class => "qtip",
+    :tooltip => "The Entity ID is a name that associates the SP to the IdP.  Some IdP's " + 
+    "might have special behavior triggerd by this name, like redirecting to it as a URL " +
+    "under some horrible failure condition.  Most IdPs use this string to configure permissions too."
+  } %>
   </div>
-	<br>
+  <br>
   <div class="field">
     <%= f.label :authn_context, "IdP Authn Context (optional)" %><br />
     <%= f.text_field :authn_context, {
-		:size => 50,
-		:class => "qtip",
-		:tooltip => "This forces in an Authn Context, which tells the IdP what method you " +
-		"want to use to authenticate.  Most IdPs probably don't need this because they choose " +
-		"what methods a user will authenticate with."
-	} %>
+    :size => 50,
+    :class => "qtip",
+    :tooltip => "This forces in an Authn Context, which tells the IdP what method you " +
+    "want to use to authenticate.  Most IdPs probably don't need this because they choose " +
+    "what methods a user will authenticate with."
+  } %>
   </div>
-	<br>
+  <br>
   <div class="field">
     <%= f.label :idp_cert_fingerprint, "IdP Cert Fingerprint (not needed with metadata)" %><br />
     <%= f.text_field :idp_cert_fingerprint %>
   </div>
-	<br>
+  <br>
   <div class="field">
     <%= f.label :idp_sso_target_url, "IdP SSO Target URL (not needed with metadata)" %><br />
     <%= f.text_field :idp_sso_target_url %>
   </div>
-	<br>
+  <br>
